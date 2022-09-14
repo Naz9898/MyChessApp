@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">My Chess App</string>
+    <string name="game_tile_description">Game tile</string>
+</resources>

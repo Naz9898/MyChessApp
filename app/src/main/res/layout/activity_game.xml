@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbarAlwaysDrawHorizontalTrack="true"
+    tools:context=".GameActivity">
+
+    <Button
+        android:id="@+id/buttonResign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:onClick="resignClick"
+        android:text="Resign"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView2"
+        android:layout_width="406dp"
+        android:layout_height="35dp"
+        android:isScrollContainer="true"
+        android:paddingLeft="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonResign"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chessBoard">
+
+        <LinearLayout
+            android:id="@+id/blackCapturedGUI"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:scrollbarAlwaysDrawHorizontalTrack="true"
+            tools:layout_editor_absoluteX="10dp"></LinearLayout>
+    </HorizontalScrollView>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:isScrollContainer="true"
+        android:paddingLeft="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/chessBoard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <LinearLayout
+            android:id="@+id/whiteCapturedGUI"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="0dp"
+            tools:layout_editor_absoluteX="10dp">
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewUsernameWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/pawnw"
+            android:text="Guest"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="411dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/textViewUsernameBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawableEnd="@drawable/pawnb"
+            android:text="Guest2"
+            android:textAlignment="textEnd"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteY="16dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <TextView
+            android:id="@+id/textViewTimerWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="1:00"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="394dp"
+            tools:layout_editor_absoluteY="4dp" />
+
+        <TextView
+            android:id="@+id/textViewTimerBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="1:00"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="200dp"
+            tools:layout_editor_absoluteY="4dp" />
+
+    </LinearLayout>
+
+    <TableLayout
+        android:id="@+id/chessBoard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView74"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView75"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView76"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView77"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView78"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView79"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView80"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView81"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView34"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView35"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView36"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView37"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView38"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView39"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView40"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView41"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView42"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView43"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView44"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView45"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView46"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView47"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView48"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView49"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView50"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView51"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView52"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView53"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView54"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView55"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView56"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView57"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView15"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView16"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView17"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView18"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView19"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView20"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView21"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView22"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView23"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView24"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView25"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView26"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView27"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView28"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView29"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView30"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView31"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+            <ImageView
+                android:id="@+id/imageView32"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:cropToPadding="false"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@android:color/darker_gray"
+                tools:srcCompat="@android:color/darker_gray" />
+
+            <ImageView
+                android:id="@+id/imageView33"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/game_tile_description"
+                android:focusableInTouchMode="false"
+                app:srcCompat="@color/white"
+                tools:srcCompat="@color/white" />
+
+        </TableRow>
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
